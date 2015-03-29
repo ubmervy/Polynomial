@@ -1,5 +1,0 @@
-all: polynomial
-
-polynomial: 
-	gcc -std=c++11 -I./h -c -Wall -Wno-unused-value main.cpp -o polynomial
-
