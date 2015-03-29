@@ -1,0 +1,26 @@
+# working dirs
+
+SRCDIR = ./src
+BUILDDIR = ./obj/Debug
+
+CC=gcc
+
+CFLAGS=-std=c++11 -Ih/ -c -Wall -Wno-unused-value
+
+LDFLAGS=
+
+EXECUTABLE=polynomial
+SOURCES=main.cpp
+OBJECTS = main.o
+
+all: $(EXECUTABLE)
+  
+$(EXECUTABLE): $(OBJECTS) 
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+$(OBJECTS):
+	$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	@rm -f $(EXECUTABLE) ${OBJECTS}
+

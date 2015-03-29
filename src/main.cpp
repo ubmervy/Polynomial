@@ -1,7 +1,7 @@
 #include <iostream>
 #include <assert.h>
-#include <complex.h>
-#include "include/Polynomial.h"
+#include <complex>
+#include "../include/Polynomial.h"
 
 void test_initialize()
 {
@@ -20,9 +20,9 @@ void test_initialize()
 
     //Polynomial<float>
     Polynomial<float> f = {7.3, 2.0, 7, 5, -6.95}; //construct non-zero polynomial
-    f[5] = 7; // set X^5 coefficient to 7
+    f[5] = 7.0; // set X^5 coefficient to 7
     auto fk = d[5]; // assign k to X^5 as a coefficient
-    assert(fk == 7.0f); // check coefficient of X^5 is 7.0f
+    assert(fk == 7.0); // check coefficient of X^5 is 7.0f
 
     //Polynomial<complex<double>>
     Polynomial<std::complex<double>> c = {(1.0, 1.0)}; //construct non-zero polynomial
