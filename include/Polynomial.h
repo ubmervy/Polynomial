@@ -92,8 +92,14 @@ public:
     //assign polinomial to polinomial
     Polynomial<T>&  operator=(const Polynomial<T>& assigned_pln)
     {
-        if (this == &assigned_pln)
-            return *this; // handle self assignment
+        if (!(this == &assigned_pln))
+        {
+            this->coefs.resize(assigned_pln.coefs.size());
+            this->coefs.shrink_to_fit();
+
+            for (int i = 0; i < this->coefs.size(); ++i)
+                this->coefs[i] = assigned_pln.coefs[i];
+        }
         //assignment operator
         return *this;
     }
@@ -111,9 +117,15 @@ public:
     }
 
     //equality operator for polinomials
-    friend bool operator==(const Polynomial<T> left_pln, const Polynomial<T>& right_pln)
+    friend bool operator==(const Polynomial<T> left_pln, const Polynomial<T> right_pln)
     {
-        return (left_pln.coefs == right_pln.coefs);
+            return (left_pln.coefs == right_pln.coefs);
+    }
+
+    //non-equality operator for polinomials
+    friend bool operator!=(const Polynomial<T> left_pln, const Polynomial<T> right_pln)
+    {
+            return !(left_pln.coefs != right_pln.coefs);
     }
 
     //addition operator for polinomials
