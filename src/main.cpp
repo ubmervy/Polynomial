@@ -29,6 +29,13 @@ void test_initialize()
     c[1] = (5.0, 0.0); // set X coefficient to (5.0, 0.0)
     auto ck = c[1]; // assign k to X as a coefficient
     assert(ck == (5.0, 0.0)); // check coefficient of X is (5.0, 0.0)
+
+    //Polynomial assignement
+    p = p; // polynomial self-assignement
+    Polynomial<int> asgn = {0, 1, 2};
+    assert(asgn.coefs != p.coefs);
+    asgn = p; // assign other polynomial
+    assert(asgn.coefs == p.coefs);
 }
 
 void test_degree()
